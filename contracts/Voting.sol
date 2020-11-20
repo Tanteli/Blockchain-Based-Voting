@@ -5,6 +5,17 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Voting is Ownable {
 
+    enum WorkflowStatus {
+        RegisteringVoters,
+        ProposalsRegistrationStarted,
+        ProposalsRegistrationEnded,
+        VotingSessionStarted,
+        VotingSessionEnded,
+        VotesTallied
+    }
+
+    WorkflowStatus public status;
+
     mapping(address => bool) public whiteList;
 
     function registerVoter (address _voterAddress) public onlyOwner returns (bool) {
@@ -14,6 +25,10 @@ contract Voting is Ownable {
 
     function isVoter (address _address) public view returns (bool) {
         return whiteList[_address];
+    }
+
+    function startProposalSession() public onlyOwner {
+        status = WorkflowStatus.ProposalsRegistrationStarted;
     }
   
 }
