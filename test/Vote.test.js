@@ -1,9 +1,9 @@
-const Voting = artifacts.require("Voting");
+const Voting = artifacts.require("Vote");
 const { expect } = require('chai');
 const { assert } = require('console');
 const { BN } = require('@openzeppelin/test-helpers');
 
-contract("Voting", (accounts) => {
+contract("Vote", (accounts) => {
     const admin = accounts[0];
     const voter1 = accounts[1];
     const voter2 = accounts[2];
@@ -21,7 +21,7 @@ contract("Voting", (accounts) => {
 }               
         
     beforeEach(async function () {
-        VotingInstance = await Voting.new({from: admin});
+        VotingInstance = await Vote.new({from: admin});
       });
 
     it("Adminstrator should add a Voter to whitelist", async () => {
