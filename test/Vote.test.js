@@ -81,3 +81,7 @@ contract("Vote", (accounts) => {
 
 
 });
+
+// event => .logs[0].event
+// test events => expectEvent(result, "expected");
+// test revert => expectRevert()
